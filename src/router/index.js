@@ -8,7 +8,7 @@ const routes = [
   },
   {
     path: '/',
-    component: () => import('@/layouts/default/Default.vue'),
+    component: () => import('@/layouts/default/index.vue'),
     children: [
       {
         path: '',

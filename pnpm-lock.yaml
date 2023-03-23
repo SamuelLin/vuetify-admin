@@ -17,6 +17,7 @@ specifiers:
   prettier: ^2.8.6
   roboto-fontface: '*'
   sass: ^1.55.0
+  vee-validate: ^4.8.3
   vite: ^3.1.9
   vite-plugin-vuetify: ^1.0.0-alpha.12
   vue: ^3.2.13
@@ -30,6 +31,7 @@ dependencies:
   core-js: 3.29.1
   pinia: 2.0.33_vue@3.2.47
   roboto-fontface: 0.10.0
+  vee-validate: 4.8.3_vue@3.2.47
   vue: 3.2.47
   vue-router: 4.1.6_vue@3.2.47
   vuetify: 3.1.11_zhdigtlnoj4qfl4bi7c6fb2bly
@@ -1991,6 +1993,15 @@ packages:
   /util-deprecate/1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==, registry: https://registry.yarnpkg.com/, tarball: https://registry.yarnpkg.com/util-deprecate/-/util-deprecate-1.0.2.tgz}
     dev: true
+
+  /vee-validate/4.8.3_vue@3.2.47:
+    resolution: {integrity: sha512-/RcxZH7mnyG1DLXMxc+70llcDFagwkfebs2Yhd5Xmoe95cosNDus5L2g5iDsShZBVUTRBE0ceLHW/FcURvaeDA==}
+    peerDependencies:
+      vue: ^3.0.0
+    dependencies:
+      '@vue/devtools-api': 6.5.0
+      vue: 3.2.47
+    dev: false
 
   /vite-plugin-vuetify/1.0.2_ln7wt77yaqx74y5dac4fyc3vzm:
     resolution: {integrity: sha512-MubIcKD33O8wtgQXlbEXE7ccTEpHZ8nPpe77y9Wy3my2MWw/PgehP9VqTp92BLqr0R1dSL970Lynvisx3UxBFw==, registry: https://registry.yarnpkg.com/, tarball: https://registry.yarnpkg.com/vite-plugin-vuetify/-/vite-plugin-vuetify-1.0.2.tgz}

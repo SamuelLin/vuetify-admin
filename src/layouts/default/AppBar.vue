@@ -1,13 +1,13 @@
 <template>
-  <v-app-bar flat>
-    <v-app-bar-title>
-      <v-icon icon="mdi-circle-slice-6" />
-
-      Essentials Preset
-    </v-app-bar-title>
+  <v-app-bar flat density="compact">
+    <AppBarBreadcrumbs />
+    <template v-slot:append>
+      <AppBarAvatar />
+    </template>
   </v-app-bar>
 </template>
 
 <script setup>
-//
+import AppBarBreadcrumbs from './AppBarBreadcrumbs.vue'
+import AppBarAvatar from './AppBarAvatar.vue'
 </script>
