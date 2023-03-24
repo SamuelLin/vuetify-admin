@@ -6,6 +6,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
+    "precommit": "lint-staged",
     "lint": "eslint -c .eslintrc.js --fix --ext .js,.ts,.vue .",
     "lint:diff": "eslint -c .eslintrc.js --fix $(git diff --name-only --diff-filter=ACM HEAD | grep -E '.(js|ts|vue)$' | xargs)"
   },
