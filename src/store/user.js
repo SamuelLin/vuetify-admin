@@ -8,7 +8,6 @@ export const useUserStore = defineStore('user', {
     roles: []
   }),
   actions: {
-    // user login
     async login() {
       // TODO: login api
       return new Promise((resolve) => {
@@ -20,8 +19,6 @@ export const useUserStore = defineStore('user', {
         }, 3000)
       })
     },
-
-    // user logout,
     logout() {
       this.name = ''
       this.roles = []
@@ -29,7 +26,6 @@ export const useUserStore = defineStore('user', {
       removeToken()
       // TODO: reset router
     },
-
     getInfo() {
       return new Promise((resolve) => {
         // TODO: get user info
@@ -38,8 +34,6 @@ export const useUserStore = defineStore('user', {
         resolve()
       })
     },
-
-    // remove token
     resetToken() {
       return new Promise((resolve) => {
         this.token = ''
