@@ -2,7 +2,7 @@
   <v-snackbar
     v-model="snackbar"
     location="top right"
-    timeout="2000"
+    :timeout="timeout"
     @update:modelValue="handleChange"
   >
     {{ message }}
@@ -21,12 +21,12 @@ const messageId = computed(() => messageStore.id)
 const message = computed(() => messageStore.message)
 
 const snackbar = ref(false)
+const timeout = ref(4000)
 
 watch(messageId, () => {
+  timeout.value = timeout.value === 4000 ? 4001 : 4000
   snackbar.value = true
 })
 
-function handleChange() {
-  console.log('disappear')
-}
+function handleChange() {}
 </script>
