@@ -22,6 +22,8 @@
 import { ref } from 'vue'
 import { permissionRoutes } from '@/router'
 
+const useless
+
 const drawer = ref(true)
 const rail = ref(true)
 
