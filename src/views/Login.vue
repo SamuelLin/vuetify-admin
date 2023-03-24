@@ -2,8 +2,10 @@
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { useField, useForm } from 'vee-validate'
+import { useUserStore } from '@/store/user'
 
 const router = useRouter()
+const userStore = useUserStore()
 
 const { handleSubmit, handleReset } = useForm({
   validationSchema: {
@@ -24,9 +26,17 @@ const password = useField('password')
 const showPassword = ref(false)
 const isSending = ref(false)
 
-const submit = handleSubmit((values) => {
-  console.log(values)
-  router.push('/')
+const submit = handleSubmit(async (form) => {
+  isSending.value = true
+
+  try {
+    await userStore.login(form)
+    router.push('/')
+  } catch (error) {
+    console.log('error', error)
+  } finally {
+    isSending.value = false
+  }
 })
 </script>
 
@@ -36,7 +46,7 @@ const submit = handleSubmit((values) => {
       <v-sheet width="300" class="mx-auto">
         <h2 class="text-center mb-2">Vuetify Admin</h2>
 
-        <v-form @submit.prevent="submit">
+        <v-form @submit.prevent="submit" :disabled="isSending">
           <v-text-field
             v-model="name.value.value"
             label="Name"
@@ -59,7 +69,9 @@ const submit = handleSubmit((values) => {
             :loading="isSending"
             >Login</v-btn
           >
-          <v-btn class="mt-2" block variant="tonal" @click="handleReset">Reset</v-btn>
+          <v-btn class="mt-2" block variant="tonal" :disabled="isSending" @click="handleReset"
+            >Reset</v-btn
+          >
         </v-form>
       </v-sheet>
     </v-container>

@@ -11,10 +11,20 @@ export const useUserStore = defineStore('user', {
     // user login
     async login() {
       // TODO: login api
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          this.name = 'Stephen Curry'
+          this.roles = ['admin']
+          setToken('123jkjk1232300asdfasdf123123')
+          resolve()
+        }, 3000)
+      })
     },
 
     // user logout,
     logout() {
+      this.name = ''
+      this.roles = []
       this.token = ''
       removeToken()
       // TODO: reset router
@@ -23,6 +33,8 @@ export const useUserStore = defineStore('user', {
     getInfo() {
       return new Promise((resolve) => {
         // TODO: get user info
+        this.name = 'Stephen Curry'
+        this.roles = ['admin']
         resolve()
       })
     },
