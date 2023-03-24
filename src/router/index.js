@@ -3,12 +3,7 @@ import { useUserStore } from '@/store/user'
 import { getToken } from '@/utils/auth'
 import DefaultLayout from '@/layouts/default'
 
-const routes = [
-  {
-    path: '/login',
-    name: 'Login',
-    component: () => import('@/views/Login.vue')
-  },
+export const permissionRoutes = [
   {
     path: '/',
     component: DefaultLayout,
@@ -16,15 +11,26 @@ const routes = [
       {
         path: '',
         name: 'Home',
-        component: () => import('@/views/Home.vue')
+        component: () => import('@/views/Home.vue'),
+        meta: { icon: 'mdi-view-dashboard' }
       },
       {
         path: 'product',
         name: 'Product',
-        component: () => import('@/views/Product.vue')
+        component: () => import('@/views/Product.vue'),
+        meta: { icon: 'mdi-basket' }
       }
     ]
   }
+]
+
+const routes = [
+  {
+    path: '/login',
+    name: 'Login',
+    component: () => import('@/views/Login.vue')
+  },
+  ...permissionRoutes
 ]
 
 const router = createRouter({

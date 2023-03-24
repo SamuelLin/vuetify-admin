@@ -1,11 +1,13 @@
 <template>
-  <v-breadcrumbs :items="['Foo', 'Bar', 'Fizz']">
-    <template v-slot:prepend>
-      <v-icon size="small" icon="mdi-home"></v-icon>
-    </template>
-  </v-breadcrumbs>
+  <v-breadcrumbs :items="breadcrumbs" exact> </v-breadcrumbs>
 </template>
 
 <script setup>
-//
+import { computed } from 'vue'
+import { useRoute } from 'vue-router'
+
+const route = useRoute()
+const breadcrumbs = computed(() =>
+  route.name === 'Home' ? [route.name] : [{ title: 'Home', href: '/' }, route.name]
+)
 </script>

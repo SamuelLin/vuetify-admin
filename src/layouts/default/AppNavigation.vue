@@ -5,19 +5,13 @@
         :prepend-icon="rail === false ? 'mdi-menu-left' : 'mdi-menu-right'"
         @click="rail = !rail"
       ></v-list-item>
+
       <v-list-item
-        prepend-icon="mdi-view-dashboard"
-        value="dashboard"
-        title="Dashboard"
-        to="/"
-        exact
-      >
-      </v-list-item>
-      <v-list-item
-        prepend-icon="mdi-basket"
-        value="messages"
-        title="Product"
-        to="/product"
+        v-for="route in routes"
+        :key="route.name"
+        :prepend-icon="route.meta.icon"
+        :title="route.name"
+        :to="`/${route.path}`"
         exact
       ></v-list-item>
     </v-list>
@@ -26,11 +20,10 @@
 
 <script setup>
 import { ref } from 'vue'
-import { useRoute } from 'vue-router'
+import { permissionRoutes } from '@/router'
 
 const drawer = ref(true)
 const rail = ref(true)
 
-const route = useRoute()
-console.log('route', route)
+const routes = permissionRoutes[0].children
 </script>
