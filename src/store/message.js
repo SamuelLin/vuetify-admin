@@ -1,4 +1,5 @@
 import { defineStore } from 'pinia'
+import { debounce } from 'lodash'
 
 function generateId() {
   const id =
@@ -13,14 +14,14 @@ function generateId() {
 export const useMessageStore = defineStore('app', {
   state: () => ({
     id: '',
-    type: '',
+    type: '', // success, info, warning, error
     message: ''
   }),
   actions: {
-    sendMessage(payload) {
+    sendMessage: debounce(function (payload) {
       this.id = generateId()
       this.type = payload.type
       this.message = payload.text
-    }
+    }, 200)
   }
 })

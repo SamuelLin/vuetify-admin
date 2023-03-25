@@ -1,5 +1,6 @@
 import axios from 'axios'
-import { useUserStore } from '@/stores/user'
+import { useUserStore } from '@/store/user'
+import { useMessageStore } from '@/store/message'
 
 const service = axios.create({
   baseURL: '/api',
@@ -30,7 +31,16 @@ service.interceptors.response.use(
   function (error) {
     // Any status codes that falls outside the range of 2xx cause this function to trigger
     // Do something with response error
+    const { status, statusText } = error.response
+
     // TODO: 401 or 403 error handling
+    const messageStore = useMessageStore()
+
+    messageStore.sendMessage({
+      type: 'error',
+      text: `${status}-${statusText}`
+    })
+
     return Promise.reject(error)
   }
 )

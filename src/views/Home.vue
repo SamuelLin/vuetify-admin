@@ -13,8 +13,13 @@ import { useMessageStore } from '@/store/message'
 const messageStore = useMessageStore()
 
 function sendAlert() {
+  const number = Math.floor(Math.random() * 100)
+  const typeIndex = Math.floor(Math.random() * 4)
+  const alertTypes = ['success', 'info', 'warning', 'error']
+
   messageStore.sendMessage({
-    text: 'This is a error'
+    type: alertTypes[typeIndex],
+    text: `Alert ${number} message`
   })
 }
 </script>
